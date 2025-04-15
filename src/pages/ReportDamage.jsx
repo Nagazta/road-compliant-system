@@ -6,21 +6,46 @@ function ReportDamage() {
     location: '',
     description: '',
     image: null,
+    date: new Date().toISOString().split('T')[0],  // Automatically set the date to today
   });
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData({
       ...formData,
-      [name]: files ? files[0] : value,
+      [name]: files ? files[0] : value,  // Handle file upload
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Later: Send this to backend or API
-    alert('Report submitted!');
+  
+    const form = new FormData();
+    form.append('location', formData.location);  // Append location
+    form.append('description', formData.description);  // Append description
+    form.append('status', 'Pending');  // Set status to "Pending" by default
+    form.append('date', formData.date);  // Append date
+    if (formData.image) {
+      form.append('image', formData.image);  // Append image file if available
+    }
+  
+    // Log the FormData to check if it is being created correctly
+    console.log('Form Data:', form);
+  
+    // Send data to the backend API
+    fetch('http://localhost:5000/api/report', {
+      method: 'POST',
+      body: form,  // Send FormData as the body
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Report submitted:', data);
+        alert('Report submitted successfully!');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Failed to submit report!');
+      });
   };
 
   return (

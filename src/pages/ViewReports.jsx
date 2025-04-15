@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/ViewReports.css'; // Importing the CSS
+import '../styles/ViewReports.css';
 
 function ViewReports() {
-  const reports = [
-    { id: 1, location: 'Main St & 5th Ave', status: 'Pending', date: '2025-04-01' },
-    { id: 2, location: 'Elm St & Oak Rd', status: 'Resolved', date: '2025-03-15' },
-    { id: 3, location: 'Broadway & 3rd', status: 'In Progress', date: '2025-03-30' },
-  ];
+  const [reports, setReports] = useState([]);
+
+  useEffect(() => {
+    // Fetch reports from the backend
+    fetch('http://localhost:5000/api/reports')
+      .then((response) => response.json())
+      .then((data) => {
+        setReports(data); // Update the state with the fetched reports
+      })
+      .catch((error) => {
+        console.error('Error fetching reports:', error);
+      });
+  }, []);
 
   return (
     <div className="view-reports">
