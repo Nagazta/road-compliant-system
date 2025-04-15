@@ -23,6 +23,26 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+/* app-layout should fill the height of the viewport */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* This ensures the footer stays at the bottom even on short pages */
+}
+
+main {
+  flex-grow: 1; /* Makes sure the main content fills the available space */
+}
+
+footer {
+  /* Style your footer as usual */
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
 
 .App-link {
   color: #61dafb;
