@@ -2,8 +2,8 @@ const mysql = require('mysql2');
 
 const db = mysql.createConnection({
   host: 'localhost',
-  user: 'root', // or your MySQL username
-  password: 'wildteach123', // replace with your password
+  user: 'root', 
+  password: 'wildteach123', 
   database: 'road_reports'
 });
 

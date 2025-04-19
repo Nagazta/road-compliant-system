@@ -18,11 +18,14 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// ✅ POST /api/report - Create new report
 router.post('/report', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No file uploaded' });
+  }
+
   const { location, description, date } = req.body;
   const status = 'Pending';
-  const image = req.file ? req.file.path.replace(/\\/g, '/') : null;
+  const image = req.file ? req.file.filename : null; // Store only filename in the database
 
   console.log('📷 Uploaded file:', req.file);
 
@@ -32,11 +35,46 @@ router.post('/report', upload.single('image'), (req, res) => {
   `;
   db.query(sql, [location, description, status, date, image], (err, result) => {
     if (err) {
-      console.error('❌ Error inserting report:', err);
+      console.error(' Error inserting report:', err);
       return res.status(500).json({ error: 'Failed to insert report' });
     }
     res.status(201).json({ success: true, id: result.insertId });
   });
 });
 
-// GET routes...
+
+// ✅ GET /api/report - Fetch all reports
+router.get('/report', (req, res) => {
+  const sql = `SELECT * FROM road_reports ORDER BY date DESC`;
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching reports:', err);
+      return res.status(500).json({ error: 'Failed to fetch reports' });
+    }
+    res.json(results);
+  });
+});
+
+// Fetch report by ID
+router.get('/report/:id', (req, res) => {
+  const reportId = req.params.id;
+
+  const sql = `SELECT * FROM road_reports WHERE id = ?`;
+  db.query(sql, [reportId], (err, results) => {
+    if (err) {
+      console.error('Error fetching report by ID:', err);
+      return res.status(500).json({ error: 'Failed to fetch report' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Report not found' });
+    }
+
+    res.json(results[0]); // Return the single report object
+  });
+});
+
+
+
+
+module.exports = router;

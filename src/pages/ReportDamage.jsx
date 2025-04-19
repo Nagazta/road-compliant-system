@@ -50,7 +50,7 @@ function ReportDamage() {
 
   return (
     <div className="report-container">
-      <h2>📍 Report Road Damage</h2>
+      <h2>Report Road Damage</h2>
       <form onSubmit={handleSubmit} className="report-form">
         <label>
           Location:

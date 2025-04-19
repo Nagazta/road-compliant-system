@@ -8,7 +8,7 @@ function ReportDetails() {
 
   useEffect(() => {
     // Fetch the specific report using the id from the URL
-    fetch(`http://localhost:5000/api/reports/${id}`)
+    fetch(`http://localhost:5000/api/report/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setReport(data); // Update the state with the fetched report data
@@ -34,17 +34,17 @@ function ReportDetails() {
         {report.additionalInfo && <p><strong>Additional Info:</strong> {report.additionalInfo}</p>}
         {report.progress && <p><strong>Progress:</strong> {report.progress}</p>}
   
-        {/* ✅ Render uploaded image if exists */}
         {report.image && (
-          <div className="image-preview">
-            <p><strong>Uploaded Image:</strong></p>
-            <img
-              src={`http://localhost:5000/${report.image.replace(/\\/g, '/')}`}
-              alt="Damage"
-              className="report-image"
-            />
-          </div>
-        )}
+  <div className="image-preview">
+    <p><strong>Uploaded Image:</strong></p>
+    <img
+      src={`http://localhost:5000/uploads/${report.image}`} // Correct path
+      alt="Damage"
+      className="report-image"
+    />
+  </div>
+)}
+
       </div>
     </div>
   );

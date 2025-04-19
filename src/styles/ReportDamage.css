@@ -29,7 +29,7 @@
   }
   
   .report-form button {
-    background-color: #0077ff;
+    background-color: #1e6c67;
     color: white;
     padding: 0.75rem;
     border: none;
@@ -40,6 +40,6 @@
   }
   
   .report-form button:hover {
-    background-color: #005fd1;
+    background-color: #2eaca4;
   }
   

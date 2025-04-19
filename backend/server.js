@@ -3,17 +3,23 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const db = require('./config/db');
-const reportRoutes = require('./routes/reportRoutes'); // ✅ Make sure this path is correct
+const reportRoutes = require('./routes/reportRoutes');
+const path = require('path'); // <-- Add this line
 
 const app = express();
 const port = 5000;
 
 // Middleware
-app.use('/uploads', express.static('uploads'));
+const corsOptions = {
+  origin: 'http://localhost:3000', // React app's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
+
 app.use(bodyParser.json());
-app.use('/uploads', express.static('uploads')); // ✅ Serve uploaded files if needed
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Mount all routes under /api
 app.use('/api', reportRoutes);

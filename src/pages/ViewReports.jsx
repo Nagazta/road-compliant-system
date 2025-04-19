@@ -7,7 +7,7 @@ function ViewReports() {
 
   useEffect(() => {
     // Fetch reports from the backend
-    fetch('http://localhost:5000/api/reports')
+    fetch('http://localhost:5000/api/report')
       .then((response) => response.json())
       .then((data) => {
         setReports(data); // Update the state with the fetched reports

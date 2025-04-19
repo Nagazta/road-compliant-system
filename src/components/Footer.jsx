@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>&copy; {new Date().getFullYear()} Road Complaint System. All rights reserved.</p>
-      <p>🚧 Built for safer roads 🚧</p>
+      <p> Built for safer roads </p>
     </footer>
   );
 }

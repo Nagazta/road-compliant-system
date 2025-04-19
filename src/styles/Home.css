@@ -11,7 +11,7 @@
   }
   
   .dash-button {
-    background-color: #0077ff;
+    background-color: #1e6c67;
     color: white;
     padding: 1rem 2rem;
     border-radius: 8px;
@@ -21,7 +21,7 @@
   }
   
   .dash-button:hover {
-    background-color: #005fd1;
+    background-color: #1e6c67;
   }
   
   .dashboard-stats {
@@ -30,13 +30,5 @@
     gap: 2rem;
     margin-top: 2rem;
     flex-wrap: wrap;
-  }
-  
-  .stat-card {
-    background-color: #f2f2f2;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    min-width: 150px;
   }
   
