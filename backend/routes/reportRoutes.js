@@ -73,15 +73,20 @@ router.get('/report/:id', (req, res) => {
     res.json(results[0]); // Return the single report object
   });
 });
-// In your reportRoutes.js or similar
-router.get('/reports/count', async (req, res) => {
-  try {
-    const [result] = await db.query('SELECT COUNT(*) AS count FROM reports');
-    res.json({ count: result[0].count });
-  } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch reports count' });
-  }
+
+router.get('/reports/count', (req, res) => {
+  const sql = 'SELECT COUNT(*) AS count FROM road_reports';
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching reports count:', err);
+      return res.status(500).json({ message: 'Failed to fetch reports count' });
+    }
+
+    res.json({ count: results[0].count });
+  });
 });
+
+
 
 
 
