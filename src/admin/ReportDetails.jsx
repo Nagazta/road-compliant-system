@@ -35,15 +35,15 @@ function ReportDetails() {
         {report.progress && <p><strong>Progress:</strong> {report.progress}</p>}
   
         {report.image && (
-  <div className="image-preview">
-    <p><strong>Uploaded Image:</strong></p>
-    <img
-      src={`http://localhost:5000/uploads/${report.image}`} // Correct path
-      alt="Damage"
-      className="report-image"
-    />
-  </div>
-)}
+          <div className="image-preview">
+            <p><strong>Uploaded Image:</strong></p>
+            <img
+              src={`http://localhost:5000/uploads/${report.image}`} // Correct path
+              alt="Damage"
+              className="report-image"
+            />
+          </div>
+        )}
 
       </div>
     </div>

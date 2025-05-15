@@ -10,7 +10,6 @@ function Home() {
 
       <div className="dashboard-buttons">
         <Link to="/report" className="dash-button">Report Damage</Link>
-        <Link to="/reports" className="dash-button">View Reports</Link>
       </div>
 
      

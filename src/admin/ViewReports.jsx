@@ -23,7 +23,7 @@ function ViewReports() {
       <ul className="report-list">
         {reports.map((report) => (
           <li key={report.id} className="report-item">
-            <Link to={`/reports/${report.id}`} className="report-link">
+            <Link to={`/admin/reports/${report.id}`} className="report-link">
               <h2>{report.location}</h2>
               <p>Status: {report.status}</p>
               <p>Date Reported: {report.date}</p>

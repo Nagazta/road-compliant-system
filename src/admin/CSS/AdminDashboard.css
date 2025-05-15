@@ -1,0 +1,55 @@
+.admin-dashboard {
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+.admin-dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-dashboard h2 {
+  margin-top: 30px;
+  color: #444;
+}
+
+.admin-dashboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-dashboard li {
+  margin: 10px 0;
+}
+
+.admin-dashboard a {
+  text-decoration: none;
+  color: #2d89ef;
+  font-weight: bold;
+}
+
+.admin-dashboard a:hover {
+  text-decoration: underline;
+}
+
+.admin-dashboard button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-dashboard button:hover {
+  background-color: #a93226;
+}
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
