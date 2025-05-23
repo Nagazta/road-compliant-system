@@ -29,6 +29,11 @@ The Road Complaint System is a web-based platform that allows users to report ro
     ```
 2. Open your browser and navigate to `http://localhost:3000`.
 
+3. To run backend type in terminal
+   cd backend
+   
+4. type node server.js
+
 ## Contributing
 Contributions are welcome! Please follow these steps:
 1. Fork the repository.
